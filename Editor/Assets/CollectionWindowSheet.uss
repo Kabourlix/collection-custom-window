@@ -1,0 +1,34 @@
+TemplateContainer {
+    flex-grow: 1;
+    flex-direction: row;
+    width: 100%;
+}
+
+#create-button {
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    margin-bottom: 20px;
+}
+
+#preview-image {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    padding-bottom: 10px;
+}
+
+#leftcontainer {
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 200px;
+    max-width: 20%;
+    min-width: 50px;
+}
+
+#Content {
+    max-width: 80%;
+    width: 80%; 
+    margin-top: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+}

@@ -1,0 +1,17 @@
+{
+    "name": "com.kabourlix.collection-custom-window",
+    "version": "1.0.0",
+    "displayName": "Custom Collection Window",
+    "description": "A little package to easily create custom editor window of a list of serialized objects",
+    "unity": "2021.3",
+    "keywords": [
+        "editor",
+        "window",
+        "collection"
+    ],
+    "author": {
+        "name": "Hugo 'Kabourlix' Da Maïa",
+        "email": "hdamaia@outlook.fr",
+        "url" : "www.hdamaia.fr"
+    }
+}

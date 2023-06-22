@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/GitHubProject/collection-custom-window/Editor/Assets/CollectionWindowSheet.uss?fileID=7433441132597879392&amp;guid=c40c4616d6b5cb643a1a201b7202bbcf&amp;type=3#CollectionWindowSheet" />
+    <ui:VisualElement name="leftcontainer" style="justify-content: space-between;">
+        <ui:ListView focusable="true" name="list" />
+        <uie:ToolbarButton text="New Achiev" display-tooltip-when-elided="true" name="create-button" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Content">
+        <ui:Image name="preview-image" />
+        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="properties" />
+    </ui:VisualElement>
+</ui:UXML>
