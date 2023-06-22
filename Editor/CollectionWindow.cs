@@ -21,16 +21,18 @@ namespace Kabourlix.CollectionWindow.Editor
             if(string.IsNullOrEmpty(_resourcesPath))
                 throw new Exception("You must set the resources path before calling EnableWindow. (ex : Assets/Resources/)");
             //Import UXML
-            //var original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>
             var original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>
-                ("Assets/GitHubProject/collection-custom-window/Editor/Assets/CollectionWindow.uxml");
+                ("Packages/com.kabourlix.collection-custom-window/Editor/Assets/CollectionWindow.uxml");
+            //var original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>
+                //("Assets/GitHubProject/collection-custom-window/Editor/Assets/CollectionWindow.uxml");
             var container = original.CloneTree();
             rootVisualElement.Add(container);
 
             //Import USS
-            //var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>
             var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>
-                ("Assets/GitHubProject/collection-custom-window/Editor/Assets/CollectionWindowSheet.uss");
+                ("Packages/com.kabourlix.collection-custom-window/Editor/Assets/CollectionWindowSheet.uss");
+            //var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>
+            //    ("Assets/GitHubProject/collection-custom-window/Editor/Assets/CollectionWindowSheet.uss");
             rootVisualElement.styleSheets.Add(styleSheet);
             
             CreateCardView();
