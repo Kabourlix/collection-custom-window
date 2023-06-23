@@ -2,6 +2,7 @@ using System;
 using GitHubProject.collection_custom_window.Runtime;
 using UnityEditor;
 using UnityEditor.UIElements;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -93,6 +94,7 @@ namespace Kabourlix.CollectionWindow.Editor
                     tBox.Clear();
                     
                     var t = it as T;
+                    var enableForEdit = AssetDatabase.IsOpenForEdit(t);
                     
                     var serializedT = new SerializedObject(t);
                     var tProperty = serializedT.GetIterator();
@@ -101,11 +103,42 @@ namespace Kabourlix.CollectionWindow.Editor
                     while (tProperty.NextVisible(false))
                     {
                         var prop = new PropertyField(tProperty);
-                        prop.SetEnabled(tProperty.name != "m_Script"); //Disable script field
+                        prop.SetEnabled(tProperty.name != "m_Script" && enableForEdit); //Disable script field
                         prop.Bind(serializedT);
                         tBox.Add(prop);
                         
                         prop.RegisterCallback<ChangeEvent<UnityEngine.Object>>((chgEvent) => LoadPreviewImage(t.Icon)); //May calls but can't do otherwise yet
+                    }
+                    
+                    //if not checked out tell it to the user
+                    if (!enableForEdit)
+                    {
+                        //Add line 
+                        var line = new VisualElement();
+                        line.style.height = 1;
+                        line.style.marginTop = 10;
+                        line.style.marginBottom = 10;
+                        //Lightgrey color
+                        line.style.backgroundColor = new Color(0.4f, 0.4f, 0.4f);
+                        tBox.Add(line);
+
+                        var label = new Label("File is checked out, only read access is allowed");
+                        //center the label
+                        label.style.alignSelf = Align.Center;
+                        tBox.Add(label);
+                        
+                        //Add button to check out the file
+                        var button = new Button(() =>
+                        {
+                            Provider.Checkout(t, CheckoutMode.Asset);
+                            var i = tList.selectedIndex;
+                            tList.SetSelection(-1);
+                            tList.SetSelection(i);
+                        });
+                        button.text = "Check out";
+                        button.style.alignSelf = Align.Center;
+                        button.style.marginTop = 10;
+                        tBox.Add(button);
                     }
                     
                     LoadPreviewImage(t.Icon);
