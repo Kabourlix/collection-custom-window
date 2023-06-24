@@ -122,7 +122,7 @@ namespace Kabourlix.CollectionWindow.Editor
                         line.style.backgroundColor = new Color(0.4f, 0.4f, 0.4f);
                         tBox.Add(line);
 
-                        var label = new Label("File is checked out, only read access is allowed");
+                        var label = new Label("File is not checked out, only read access is allowed.");
                         //center the label
                         label.style.alignSelf = Align.Center;
                         tBox.Add(label);
